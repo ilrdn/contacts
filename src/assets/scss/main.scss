@@ -1,0 +1,20 @@
+@import url(fonts.scss);
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Verdana';
+}
+
+h1 {
+    color: black;
+    font-weight: 300;
+    text-align: center;
+}
+
+#app {
+    min-height: 100vh;
+    background: #d9afd9;
+    background: linear-gradient(to top, #d9afd9 0%, #97d9e1 100%);
+}
