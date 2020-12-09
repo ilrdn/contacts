@@ -1,20 +1,137 @@
 @import url(fonts.scss);
 
+$main_gray: #333;
+$main_rose: #ef32d9;
+$main_green: #89fffd;
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Verdana';
+    font-weight: normal;
+}
+
+button {
+    padding: 0;
+    border: none;
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+    cursor: pointer;
 }
 
 h1 {
     color: black;
-    font-weight: 300;
     text-align: center;
 }
 
-#app {
-    min-height: 100vh;
-    background: #d9afd9;
-    background: linear-gradient(to top, #d9afd9 0%, #97d9e1 100%);
+h2 {
+    color: $main_gray;
+}
+
+.container {
+    width: 100%;
+    padding: 48px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.flex-container {
+    display: flex;
+    margin: -16px;
+    margin-top: 48px;
+    flex-wrap: wrap;
+    width: 95%;
+    max-width: 1024px;
+}
+
+.flex-item {
+    width: calc(50% - 32px);
+    margin: 16px;
+}
+
+.contact {
+    display: flex;
+    align-items: flex-start;
+    padding: 16px;
+    border-radius: 16px;
+    box-shadow: 0px 4px 12px rgba($color: #444b4d, $alpha: .1);
+    cursor: pointer;
+    transition: .5s;
+}
+
+.contact:hover {
+    box-shadow: 0px 4px 12px rgba($color: #444b4d, $alpha: .5);
+
+    .contact__img {
+        transform: scale(1.1);
+    }
+}
+
+
+
+.contact__img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    margin-right: 16px;
+    transition: .5s;
+    background: linear-gradient(to right, $main_green, $main_rose);
+
+    span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        transition: .5s;
+        font-size: 26px;
+        font-weight: bold;
+        color: #fff;
+    }
+    .fav {
+        position: absolute;
+        bottom: -5px;
+        left: -5px;
+        width: 20px;
+        height: 20px;
+        background: url(./assets/fav.svg) center/contain no-repeat;
+    }
+}
+
+.contact__info {
+    align-self: center;
+
+    h2 {
+        color: #424242;
+    }
+
+    span {
+        color: #bdbdbd;
+    }
+}
+
+button.addBtn {
+    border-radius: 16px;
+    box-shadow: 0px 4px 12px rgba($main_rose, $alpha: .1);
+    transition: .3s;
+    background-color: rgba($main_rose , $alpha: .5);
+
+    span {
+        font-weight: bold;
+        font-size: 40px;
+        transition: .3s;
+        color: #fff;
+    }
+}
+
+button.addBtn:hover {
+    opacity: .7;
 }
