@@ -1,8 +1,8 @@
-@import url(fonts.scss);
-
 $main_gray: #333;
 $main_rose: #ef32d9;
 $main_green: #89fffd;
+$rose: #e14fad;
+$orange: #f9d423;
 
 * {
     margin: 0;
@@ -70,8 +70,6 @@ h2 {
     }
 }
 
-
-
 .contact__img {
     display: flex;
     align-items: center;
@@ -82,7 +80,7 @@ h2 {
     height: 60px;
     margin-right: 16px;
     transition: .5s;
-    background: linear-gradient(to right, $main_green, $main_rose);
+    background: linear-gradient(to right, $rose, $orange);
 
     span {
         display: flex;
@@ -118,11 +116,24 @@ h2 {
     }
 }
 
+.contact__del {
+    width: 16px;
+    height: 16px;
+    background: url(./assets/close.svg) center/25px no-repeat;
+    margin-left: auto;
+}
+
+.contact__del:hover {
+    opacity: .7;
+}
+
 button.addBtn {
     border-radius: 16px;
-    box-shadow: 0px 4px 12px rgba($main_rose, $alpha: .1);
+    box-shadow: 0px 4px 12px rgba($orange, $alpha: .1);
     transition: .3s;
-    background-color: rgba($main_rose , $alpha: .5);
+    background-color: rgba($orange , $alpha: .9);
+    flex-grow: 1;
+    min-height: 92px;
 
     span {
         font-weight: bold;
@@ -134,4 +145,78 @@ button.addBtn {
 
 button.addBtn:hover {
     opacity: .7;
+}
+
+.popup {
+    padding: 40px 24px;
+    width: 90%;
+    max-width: 448px;
+    position: relative;
+    box-shadow: 0px 4px 12px rgba(68, 75, 77, 0.1);
+    border-radius: 16px;
+    background: #fff;
+    margin: auto;
+
+    button.close {
+        padding: 0;
+        border: none;
+        font: inherit;
+        color: inherit;
+        background-color: transparent;
+        cursor: pointer;
+        position: absolute;
+        top: 40px;
+        right: 24px;
+        width: 16px;
+        height: 16px;
+        background: url(./assets/close.svg) center/cover;
+    }
+
+    button.close:hover {
+        opacity: .7;
+    }
+
+    input, textarea {
+        width: 100%;
+        outline: none;
+        font-size: 100%;
+        border: 1px solid #a5a5a5;
+        margin: 16px 0;
+        padding: 12px 8px;
+        resize: none;
+        border-radius: 6px;
+    }
+
+    input:focus, textarea:focus {
+        border-color: $rose;
+    }
+
+    h3 {
+        margin-bottom: 24px;
+    }
+}
+
+.modal {
+    z-index: 99999;
+    position: fixed;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+
+@media screen and (max-width: 800px) {
+    .flex-container {
+        display: block;
+    }
+
+    .flex-item {
+        margin: 16px 0;
+        width: 100%;
+    }
 }

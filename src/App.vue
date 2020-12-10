@@ -15,14 +15,18 @@
           </div>
           <button class="contact__del"></button>
         </a>
-        <button @click="showModal = true" class="flex-item addBtn"><span>Add contact</span></button>
+        <button @click="showModal = true" class="flex-item addBtn"><span>Add a contact</span></button>
     </div>
-    <modal v-if="showModal">
-      <h3 slot="header">custom header</h3>
-      <button class="modal-default-button" @click="showModal = false">
-        OK
-      </button>
-    </modal>
+    <div v-if="showModal" class="modal" @click.self="showModal = false">
+      <div class="popup">
+        <button class="close" @click="showModal = false"></button>
+        <h3>Add a contact</h3>
+        <input type="text" placeholder="Name" v-model="contactName">
+        <input type="text" placeholder="Phone" v-model="contactPhone">
+        <input type="checkbox" name="" id="" v-model="contactFav">
+        <button class="confirm" @click="newContact">confirm</button>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -30,6 +34,10 @@
 export default {
   data () {
     return {
+      contactName: '',
+      contactPhone: '',
+      contactFav: false,
+      contactId: 4,
       showModal: false,
       contacts: [
         {
@@ -60,10 +68,27 @@ export default {
       value = value.toString()
       return value.slice(0, 1).toUpperCase()
     }
+  },
+  methods: {
+    newContact () {
+      if (this.contactName === '') {
+        return
+      }
+      this.contacts.push({
+        id: this.contactId,
+        name: this.contactName,
+        phone: this.contactPhone,
+        fav: this.contactFav
+      })
+
+      // Reset
+      this.contactId += 1
+    }
   }
 }
 </script>
 
 <style lang="scss">
 @import "./assets/scss/main.scss";
+@import "./assets/scss/fonts.scss";
 </style>
