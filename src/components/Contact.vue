@@ -1,15 +1,22 @@
 <template>
-  <div id="app">
-    <h1>Contacts</h1>
+  <div class="container">
+    <h1>id {{ contactId }}</h1>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'App'
+  computed: {
+    contacts () {
+      return this.$store.getters.contacts
+    },
+    contactId () {
+      return +this.$route.params.id
+    }
+  }
 }
 </script>
 
 <style lang="scss">
-@import url(../assets/scss/main.scss);
+/* @import url(../assets/scss/main.scss); */
 </style>
