@@ -1,21 +1,22 @@
+import { v4 as uuidv4 } from 'uuid'
 export default {
   state: {
     contacts: [
       {
-        'id': 1,
+        'id': uuidv4(),
         'name': 'admin',
         'company': 'contacts',
         'phone': '+7 (999) 999 99 99',
         'fav': false
       },
       {
-        'id': 2,
+        'id': uuidv4(),
         'name': 'Ilya Rodin',
-        'phone': '+7 (999) 999 99 99',
+        'phone': '+7 (111) 111 11 11',
         'fav': true
       },
       {
-        'id': 3,
+        'id': uuidv4(),
         'name': 'name',
         'phone': '+7 (999) 999 99 99',
         'fav': false

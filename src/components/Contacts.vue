@@ -2,7 +2,8 @@
   <div class="container">
     <h1>Contacts</h1>
     <div class="flex-container contacts">
-        <router-link :to="{ path: '/' + contact.id}" class="flex-item contact" v-for="contact in contacts" :key="contact.id">
+        <div class="flex-item contact" v-for="contact in contacts" :key="contact.id">
+          <router-link :to="{ path: '/' + contact.id}" class="contact__link"></router-link>
           <div class="contact__img">
             <span>
               {{ contact.name | capitalize }}
@@ -13,8 +14,10 @@
             <h2>{{ contact.name }}</h2>
             <span v-if="contact.phone">{{ contact.phone }}</span>
           </div>
-          <button class="contact__del" @click="deleteContact(contact)"></button>
-        </router-link>
+          <div class="contact__del">
+            <button @click="deleteContact(contact)"></button>
+          </div>
+        </div>
         <button @click="showModal = true" class="flex-item addBtn"><span>Add a contact</span></button>
     </div>
     <div v-if="showModal" class="modal" @click.self="showModal = false">
@@ -34,6 +37,7 @@
 </template>
 
 <script>
+import { v4 as uuidv4 } from 'uuid'
 export default {
   computed: {
     contacts () {
@@ -45,7 +49,7 @@ export default {
       contactName: '',
       contactPhone: '',
       contactFav: false,
-      contactId: 4,
+      contactId: uuidv4(),
       showModal: false
     }
   },
@@ -69,7 +73,7 @@ export default {
       }
       this.$store.dispatch('newContact', contact)
       // Reset
-      this.contactId += 1
+      this.contactId = uuidv4()
       this.contactName = ''
       this.contactPhone = ''
     },
